@@ -41,30 +41,29 @@ button {
   width:80px;
   text-align:center;
   display:block;
-  font-family: arial;
-  text-decoration: none;
-  font-weight: 300;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  border: white 1px solid;
-  color: #1071FF;
-  padding: 3px;
+  text-decoration: none;
+  border: white 2px solid;
+  color: white;
+  padding: 1px;
   padding-left: 5px;
   padding-right: 5px;
   margin: 20px auto;
-
   border-radius: 0px;
+  background-color: lightseagreen;
 }
 
 button:hover {
   top: 5px;
   transition: .5s;
-  color: #10FF58;
-  border: #10FF58 1px solid;
+  color: white;
+  border: white 2px solid;
   border-radius: 10px;
 }
 button:active {
   color: #000;
-  border: #1A1A1A 1px solid;
-  transition: .07s;
+  border: #1071FF 1px solid;
+  transition: .05s;
   background-color: #FFF;
 }

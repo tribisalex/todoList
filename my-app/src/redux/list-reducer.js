@@ -4,7 +4,7 @@ const UPDATE_NEW_TASK_TEXT = 'UPDATE-NEW-TASK-TEXT';
 let initialState = {
     tasks: [
         {id: 1, message: 'My first task'},
-        {id: 2, message: 'Вымыть кухню'},
+        {id: 2, message: 'Показать созданный ToDo ментору'},
         ],
     newTaskText: '',
     profile: null,
