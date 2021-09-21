@@ -1,5 +1,4 @@
 import React from 'react';
-import List from "../ListPost/List.js";
 import s from './Lists.module.css'
 import List1 from "../ListPost/List1";
 
