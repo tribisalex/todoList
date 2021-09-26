@@ -1,10 +1,10 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
-import listReducer from './list-reducer.js';
 import thunkMiddleWare from "redux-thunk";
 import { reducer as formReducer } from 'redux-form';
+import TaskReducer from "../components/store/state/tasks/actions";
 
 let reducers = combineReducers ({
-    listTask: listReducer,
+    listTask: TaskReducer,
     form: formReducer
 });
 
