@@ -1,16 +1,16 @@
 import React from 'react';
-import s from "../Task/TaskList.module.css";
+import s from './AddForm.module.css'
 
-const AddTaskForm = ({addTask, updateNewTaskText, newTaskText}) => {
+const AddTaskForm = (props) => {
 
     const NewTaskElement = React.createRef();
 
     const onAddTask = () => {
-        addTask();
+        props.addTask();
     }
 
     const onTaskChange = () => {
-        updateNewTaskText(NewTaskElement.current.value);
+        props.updateNewTaskText(NewTaskElement.current.value);
     }
 
     return (
@@ -19,7 +19,7 @@ const AddTaskForm = ({addTask, updateNewTaskText, newTaskText}) => {
                               className={s.MessageBlock}
                               ref={NewTaskElement}
                               onChange={onTaskChange}
-                              value={newTaskText}/>
+                              value={props.newTaskText}/>
             <button onClick={onAddTask} className={s.btnAdd}>Добавить задание</button>
         </div>
     )
