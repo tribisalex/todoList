@@ -11,7 +11,8 @@ const initialState = {
 const TaskReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case ADD_TASK: {
+        case ADD_TASK:
+        {
             let newTask = {
                 id: 3,
                 message: state.newTaskText

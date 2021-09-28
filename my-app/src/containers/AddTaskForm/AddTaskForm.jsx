@@ -5,8 +5,8 @@ import AddTaskForm from "../../components/AddTaskForm/AddTaskForm";
 
 const mapStateToProps = (state) => (
     {
-        state: state.listTask.tasks,
-        newTaskText: state.listTask.newTaskText
+        state: state.TaskList.tasks,
+        newTaskText: state.TaskList.newTaskText
     }
 )
 

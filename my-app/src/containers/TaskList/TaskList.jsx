@@ -6,8 +6,8 @@ import Task from "../../components/Task/Task";
 
 const mapStateToProps = (state) => (
     {
-        tasks: state.listTask.tasks,
-        newTaskText: state.listTask.newTaskText
+        tasks: state.TaskList.tasks,
+        newTaskText: state.TaskList.newTaskText
     }
 )
 

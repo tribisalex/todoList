@@ -2,7 +2,6 @@ import React from 'react';
 import s from './AddForm.module.css'
 
 const AddTaskForm = (props) => {
-
     const NewTaskElement = React.createRef();
 
     const onAddTask = () => {

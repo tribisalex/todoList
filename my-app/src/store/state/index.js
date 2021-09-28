@@ -3,7 +3,7 @@ import {reducer as formReducer} from 'redux-form';
 import TaskReducer from "./tasks";
 
 const reducers = combineReducers({
-    listTask: TaskReducer,
+    TaskList: TaskReducer,
     form: formReducer
 });
 
