@@ -1,21 +1,24 @@
-import {ADD_TASK, DELETE_TASK, LINE_THROUGH_TASK, NO_LINE_THROUGH_TASK, UPDATE_NEW_TASK_TEXT} from '../../types';
+import {ADD_TASK, DELETE_TASK, TASK_MARKED, UPDATE_NEW_TASK_TEXT} from '../../types';
 
 const initialState = {
     tasks: [
-        {id: 1, message: 'My first task'},
-        {id: 2, message: 'Показать созданный ToDo ментору'},
+        {id: 1, message: 'My first task', done: false},
+        {id: 2, message: 'Показать созданный ToDo ментору', done: false},
+        {id: 3, message: 'Task a tree', done: true},
     ],
     newTaskText: ''
 };
 
 const TaskReducer = (state = initialState, action) => {
+    console.log(action.id)
 
     switch (action.type) {
         case ADD_TASK:
         {
             let newTask = {
-                id: 3,
-                message: state.newTaskText
+                id: 4,
+                message: state.newTaskText,
+                done: false
             };
             return {
                 ...state,
@@ -31,23 +34,18 @@ const TaskReducer = (state = initialState, action) => {
             };
         };
 
-        case LINE_THROUGH_TASK: {
+        case TASK_MARKED: {
             return {
-                ...state
-            }
-        };
-
-        case NO_LINE_THROUGH_TASK: {
-            return {
-                ...state
-            }
+                ...state,
+                tasks: state.tasks.map((task) => task.id === action.id ? { ...task, done: !task.done} : task)
+            };
         };
 
         case DELETE_TASK: {
             return {
                 ...state
-            }
-        };
+                    }
+                }
 
         default:
             return state;

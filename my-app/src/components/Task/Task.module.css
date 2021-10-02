@@ -1,22 +1,100 @@
-.task2 {
-    display: inline-block;
-    width: auto;
-    float: left;
-    text-align: justify;
-    cursor: pointer;
+.list_item {
+    grid-area: lI;
+    display: grid;
+    grid-template-areas: 'task db';
+    grid-template-columns: 10fr 3fr;
+    grid-template-rows: 1fr;
+}
+
+.task {
+    grid-area: task;
     -moz-user-select: none;
     -khtml-user-select: none;
     -webkit-user-select: none;
     user-select: none;
-    margin: 0 10px 10px 0
 }
 
-.task1 {
-    max-width: 20%;
-    display: inline-block;
-    float: right;
+.listItemDeleteBtn {
+    grid-area: db;
+    width: 30px;
+    cursor: pointer;
 }
 
-.task {
-    overflow: hidden;
+.listItemSpan {
+
 }
+
+.list_item_checkbox {
+
+}
+
+
+
+
+/*.task2 {*/
+/*    display: inline-block;*/
+/*    width: auto;*/
+/*    float: left;*/
+/*    text-align: justify;*/
+/*    cursor: pointer;*/
+/*    -moz-user-select: none;*/
+/*    -khtml-user-select: none;*/
+/*    -webkit-user-select: none;*/
+/*    user-select: none;*/
+/*    margin: 0 10px 10px 0*/
+/*}*/
+
+/*.task1 {*/
+/*    width: 20%;*/
+/*    display: inline-block;*/
+/*    float: right;*/
+/*}*/
+
+/*.list_item_checkbox {*/
+/*    display: inline-block;*/
+/*    width: auto;*/
+/*    float: left;*/
+/*}*/
+
+/*.list_item {*/
+/*    overflow: hidden;*/
+/*    list-style-type: none;*/
+/*    color: white;*/
+/*}*/
+
+/*.listItemSpan {*/
+/*    display: inline-block;*/
+/*    float: left;*/
+/*    cursor: pointer;*/
+/*    -moz-user-select: none;*/
+/*    -khtml-user-select: none;*/
+/*    -webkit-user-select: none;*/
+/*    user-select: none;*/
+/*    margin: 0 10px 10px 0*/
+/*}*/
+
+/*.list_item_done {*/
+/*    color: red;*/
+/*}*/
+
+/*.listItemDeleteBtn {*/
+/*    max-width: 20%;*/
+/*    display: inline-block;*/
+/*    float: right;*/
+/*    margin: 0 10px 10px 0;*/
+/*}*/
+
+
+/*.content li {*/
+/*    user-select: none;*/
+/*    margin-bottom: 100px;*/
+/*    display: flex;*/
+/*    justify-content: space-around;*/
+/*}*/
+
+/*.content li i {*/
+/*    color: #c3c3c3;*/
+/*    font-size: 15px;*/
+/*    cursor: pointer;*/
+/*    padding: 5px 10px;*/
+/*}*/

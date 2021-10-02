@@ -2,14 +2,17 @@ import React from 'react';
 import './App.css';
 import {Provider} from 'react-redux';
 import TaskList from '../containers/TaskList';
-import AddTaskForm from '../containers/AddTaskForm';
+import AddTaskForm from '../containers/AddTaskFormContain';
 import store from "../store/state";
 
 const App = () => (
     <Provider store={store}>
-        <h3>Мои задания</h3>
-        <AddTaskForm/>
-        <TaskList/>
+        <div className='app-wrapper'>
+            <div className='todoList'>
+                <AddTaskForm/>
+                <TaskList/>
+            </div>
+        </div>
     </Provider>
 )
 

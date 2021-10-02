@@ -1,19 +1,24 @@
 import React from 'react';
-import s from "./Task.module.css";
+import styles from "./Task.module.css";
 import kor from '../../assets/kor.png'
+import classNames from 'classnames/bind';
 
+const cx = classNames.bind(styles);
 
-const Task = ({lineThroughTask, noLineThroughTask, deleteTask, message}) => (
-    <div className={s.task}>
-        <div className={s.task1}>
-            <img src={kor} width={30} onClick={deleteTask}/>
-        </div>
-        <div className={s.task2}
-             onClick={lineThroughTask}
-             onDoubleClick={noLineThroughTask}>
-            <li>{message}</li>
-        </div>
-    </div>
-);
+const Task = (props) => {
+    return (
+        <li className={cx('list_item', {'list_item_done': props.done})}>
+            <div className={styles.task}>
+                <input
+                    type='checkbox'
+                    className={styles.list_item_checkbox}
+                    defaultChecked={props.done}
+                    onChange={() => props.taskMarked(props.id)}/>
+                <span className={styles.listItemSpan}>{props.message}</span>
+            </div>
+            <img className={styles.listItemDeleteBtn} onClick={props.deleteTask} src={kor} />
+        </li>
+    )
+};
 
 export default Task;

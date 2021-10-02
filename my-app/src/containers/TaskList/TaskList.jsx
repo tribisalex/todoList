@@ -1,30 +1,45 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {deleteTaskActionCreator,lineThroughTaskActionCreator,noLineThroughTaskActionCreator} from "../../store/state/tasks/actions";
+import {deleteTaskActionCreator, isTaskMarkedActionCreator} from "../../store/state/tasks/actions";
 import Task from "../../components/Task/Task";
-
 
 const mapStateToProps = (state) => (
     {
         tasks: state.TaskList.tasks,
-        newTaskText: state.TaskList.newTaskText
+        newTaskText: state.TaskList.newTaskText,
+        isTaskMarked: state.TaskList.isTaskMarked
     }
 )
 
 const mapDispatchToProps = (dispatch) => (
     {
         deleteTask: () => (dispatch(deleteTaskActionCreator())),
-        lineThroughTask: () => (dispatch(lineThroughTaskActionCreator())),
-        noLineThroughTask: () => (dispatch(noLineThroughTaskActionCreator())),
+        taskMarked: (id) => {dispatch(isTaskMarkedActionCreator(id));
+        }
     }
 )
 
-const TaskList = ({tasks}) => (
+const TaskList = (props) => {
+
+    const taskMarked = (id) => {
+        props.taskMarked(id);
+    }
+
+    const deleteTask = (name) => {
+        props.deleteTask(name);
+    }
+
+    return (
     <div>
         <div>
-            {tasks.map((task) => <Task message={task.message}/>)}
+            {props.tasks.map((task) => <Task message={task.message}
+                                             taskMarked={taskMarked}
+                                             deleteTask={deleteTask}
+                                             id={task.id}
+                                             done={task.done}
+            />)}
         </div>
     </div>
-)
-
+    )
+}
 export default connect(mapStateToProps, mapDispatchToProps)(TaskList);

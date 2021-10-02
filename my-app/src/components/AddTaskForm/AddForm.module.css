@@ -1,21 +1,50 @@
-.tasks {
-    overflow: hidden;
-    display: inline-block;
+.addTaskForm {
+    grid-area: af;
+    background-color: lightseagreen;
+    display: grid;
+    grid-template-columns: 8fr 4fr;
+    grid-template-rows: 60px 1fr ;
+    grid-template-areas: 'att att' 'mb ba';
 }
 
-.MessageBlock {
-    display: inline-block;
-    width: auto;
-    float: left;
-    text-align: justify;
-    margin: 0 10px 10px 0;
-    padding: 2px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
+.addTaskText {
+    grid-area: att;
 }
 
-.btnAdd {
-    display: inline-block;
-    float: right;
-    margin: 0 10px 10px 0;
+.messageBlock {
+    grid-area: mb;
 }
+
+ .btnAdd {
+     grid-area: ba;
+ }
+
+
+/*.tasks {*/
+/*    overflow: hidden;*/
+/*    display: inline-block;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    margin: 0 auto;*/
+/*}*/
+
+/*.MessageBlock {*/
+/*    display: inline-block;*/
+/*    width: auto;*/
+/*    float: left;*/
+/*    text-align: justify;*/
+/*    margin: 0 10px 10px 10px;*/
+/*    padding: 2px;*/
+/*    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+/*    font-size: 14px;*/
+/*    background: #d9d9d9;*/
+/*    content: "";*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*}*/
+
+/*.btnAdd {*/
+/*    display: inline-block;*/
+/*    float: right;*/
+/*    margin: 0 10px 10px 0;*/
+/*}*/
