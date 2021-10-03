@@ -10,13 +10,12 @@ const initialState = {
 };
 
 const TaskReducer = (state = initialState, action) => {
-    console.log(action.id)
 
     switch (action.type) {
         case ADD_TASK:
         {
             let newTask = {
-                id: 4,
+                id: Date.now(),
                 message: state.newTaskText,
                 done: false
             };
@@ -43,7 +42,8 @@ const TaskReducer = (state = initialState, action) => {
 
         case DELETE_TASK: {
             return {
-                ...state
+                ...state,
+                tasks: state.tasks.filter((task) => task.id !== action.id)
                     }
                 }
 

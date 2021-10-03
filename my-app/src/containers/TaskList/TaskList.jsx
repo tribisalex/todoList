@@ -13,7 +13,7 @@ const mapStateToProps = (state) => (
 
 const mapDispatchToProps = (dispatch) => (
     {
-        deleteTask: () => (dispatch(deleteTaskActionCreator())),
+        deleteTask: (id) => (dispatch(deleteTaskActionCreator(id))),
         taskMarked: (id) => {dispatch(isTaskMarkedActionCreator(id));
         }
     }
@@ -25,21 +25,21 @@ const TaskList = (props) => {
         props.taskMarked(id);
     }
 
-    const deleteTask = (name) => {
-        props.deleteTask(name);
+    const deleteTask = (id) => {
+        props.deleteTask(id);
     }
 
     return (
-    <div>
         <div>
-            {props.tasks.map((task) => <Task message={task.message}
-                                             taskMarked={taskMarked}
-                                             deleteTask={deleteTask}
-                                             id={task.id}
-                                             done={task.done}
-            />)}
+            <div>
+                {props.tasks.map((task) => <Task message={task.message}
+                                                 taskMarked={taskMarked}
+                                                 deleteTask={deleteTask}
+                                                 id={task.id}
+                                                 done={task.done}
+                />)}
+            </div>
         </div>
-    </div>
     )
 }
 export default connect(mapStateToProps, mapDispatchToProps)(TaskList);

@@ -5,18 +5,19 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-const Task = (props) => {
+const Task = ({done, taskMarked, id, message, deleteTask}) => {
+
     return (
-        <li className={cx('list_item', {'list_item_done': props.done})}>
+        <li className={cx('list_item', {'list_item_done': done})}>
             <div className={styles.task}>
                 <input
                     type='checkbox'
                     className={styles.list_item_checkbox}
-                    defaultChecked={props.done}
-                    onChange={() => props.taskMarked(props.id)}/>
-                <span className={styles.listItemSpan}>{props.message}</span>
+                    defaultChecked={done}
+                    onChange={() => taskMarked(id)}/>
+                <span className={styles.listItemSpan}>{message}</span>
             </div>
-            <img className={styles.listItemDeleteBtn} onClick={props.deleteTask} src={kor} />
+            <img className={styles.listItemDeleteBtn} onClick={() => deleteTask(id)} src={kor} />
         </li>
     )
 };
