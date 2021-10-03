@@ -1,0 +1,59 @@
+.addTaskForm {
+    grid-area: af;
+    background-color: lightblue;
+    border-radius: 5px;
+    display: grid;
+    grid-gap: 15px;
+    padding-bottom: 10px;
+    grid-template-areas: 'att att' 'mb ba';
+    grid-template-columns: 8fr 4fr;
+    grid-template-rows: 30px 1fr ;
+}
+
+.addTaskText {
+    grid-area: att;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+.messageBlock {
+    grid-area: mb;
+    margin-left: 5px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    background: #d9d9d9;
+    content: "";
+}
+
+ .btnAdd {
+     grid-area: ba;
+     margin-right: 5px;
+ }
+
+button {
+    text-align:center;
+    font-size: 14px;
+    text-decoration: none;
+    border: white 2px solid;
+    color: white;
+    padding: 1px;
+    border-radius: 0px;
+    background-color: lightseagreen;
+}
+
+button:hover {
+    top: 5px;
+    transition: .5s;
+    color: white;
+    border: white 2px solid;
+    border-radius: 10px;
+}
+
+button:active {
+    color: #000;
+    border: #1071FF 1px solid;
+    transition: .05s;
+    background-color: #FFF;
+}
