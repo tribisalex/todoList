@@ -12,29 +12,28 @@ const mapStateToProps = (state) => (
 
 const mapDispatchToProps = (dispatch) => (
     {
-        addTask: () => (dispatch(addTaskActionCreator())),
-        updateNewTaskText: (text) => {
-            dispatch(updateNewTaskTextActionCreator(text));
-        },
+        addTask: () => dispatch(addTaskActionCreator()),
+        updateNewTaskText: (text) => dispatch(updateNewTaskTextActionCreator(text))
     }
 )
 
-const AddTaskFormContain = (props) => {
+const AddTaskFormContain = ({addTask, updateNewTaskText, newTaskText}) => {
 
     const NewTaskElement = React.createRef();
 
     const onAddTask = () => {
-        props.addTask();
+        addTask();
     }
 
     const onTaskChange = () => {
-        props.updateNewTaskText(NewTaskElement.current.value);
+        updateNewTaskText(NewTaskElement.current.value);
     }
     return (
         <>
             <AddTaskForm onAddTask={onAddTask}
                          onTaskChange={onTaskChange}
                          NewTaskElement={NewTaskElement}
+                         newTaskText={newTaskText}
             />
         </>
     )

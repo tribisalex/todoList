@@ -1,6 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {deleteTaskActionCreator, isTaskMarkedActionCreator} from "../../store/state/tasks/actions";
+import {
+    deleteTaskActionCreator, editTaskActionCreator,
+    isTaskMarkedActionCreator, saveTaskActionCreator
+} from "../../store/state/tasks/actions";
 import Task from "../../components/Task/Task";
 
 const mapStateToProps = (state) => (
@@ -13,30 +16,46 @@ const mapStateToProps = (state) => (
 
 const mapDispatchToProps = (dispatch) => (
     {
-        deleteTask: (id) => (dispatch(deleteTaskActionCreator(id))),
-        taskMarked: (id) => {dispatch(isTaskMarkedActionCreator(id));
-        }
+        deleteTask: (id) => dispatch(deleteTaskActionCreator(id)),
+        editTask: (id) => dispatch(editTaskActionCreator(id)),
+        saveTask: (id, message) => dispatch(saveTaskActionCreator(id, message)),
+        taskMarked: (id) => dispatch(isTaskMarkedActionCreator(id))
     }
 )
 
-const TaskList = (props) => {
+const TaskList = ({taskMarked, deleteTask, tasks, newTaskText, onTaskChange, saveTask, editTask}) => {
 
-    const taskMarked = (id) => {
-        props.taskMarked(id);
+    const onSaveTask = (id, message) => {
+        saveTask(id, message);
     }
 
-    const deleteTask = (id) => {
-        props.deleteTask(id);
+    const onTaskMarked = (id) => {
+        taskMarked(id);
+    }
+
+    const onDeleteTask = (id) => {
+        deleteTask(id);
+    }
+
+    const onEditTask = (id) => {
+        editTask(id);
     }
 
     return (
         <div>
             <div>
-                {props.tasks.map((task) => <Task message={task.message}
-                                                 taskMarked={taskMarked}
-                                                 deleteTask={deleteTask}
-                                                 id={task.id}
-                                                 done={task.done}
+                {tasks
+                    .sort((a,b) => a.done - b.done)
+                    .map((task) => <Task taskMarked={onTaskMarked}
+                                         deleteTask={onDeleteTask}
+                                         editTask={onEditTask}
+                                         saveTask={onSaveTask}
+                                         newTaskText={newTaskText}
+                                         onTaskChange={onTaskChange}
+                                         id={task.id}
+                                         message={task.message}
+                                         change={task.change}
+                                         done={task.done}
                 />)}
             </div>
         </div>

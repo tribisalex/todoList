@@ -2,10 +2,14 @@
     grid-area: lI;
     display: grid;
     grid-gap: 15px;
-    grid-template-areas: 'task db';
-    grid-template-columns: 10fr 3fr;
+    grid-template-areas: 'task cb db';
+    grid-template-columns: 10fr 1fr 1fr;
     grid-template-rows: 1fr;
     color: white;
+    border-radius: 10px;
+    margin: 10px 5px 10px 5px;
+    background-color: darkslategrey;
+    position: relative;
 }
 
 .task {
@@ -22,6 +26,12 @@
     cursor: pointer;
 }
 
+.listItemChangeBtn {
+    grid-area: cb;
+    width: 25px;
+    cursor: pointer;
+}
+
 .listItemSpan {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 16px;
@@ -35,4 +45,5 @@
 .list_item_done {
     color: #c3c3c3;
     text-decoration: line-through;
+    background-color: darkgray;
 }

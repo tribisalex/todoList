@@ -1,16 +1,16 @@
-import {ADD_TASK, DELETE_TASK, TASK_MARKED, UPDATE_NEW_TASK_TEXT} from '../../types';
+import {ADD_TASK, DELETE_TASK, EDIT_TASK, SAVE_TASK, TASK_MARKED, UPDATE_NEW_TASK_TEXT} from '../../types';
 
 const initialState = {
     tasks: [
-        {id: 1, message: 'My first task', done: false},
-        {id: 2, message: 'Показать созданный ToDo ментору', done: false},
-        {id: 3, message: 'Task a tree', done: true},
+        {id: 1, message: 'My first task', done: false, change: false},
+        {id: 2, message: 'Показать созданный ToDo ментору', done: false, change: false},
+        {id: 3, message: 'Task a tree', done: true, change: false},
     ],
     newTaskText: ''
 };
 
 const TaskReducer = (state = initialState, action) => {
-
+    console.log(action.id)
     switch (action.type) {
         case ADD_TASK:
         {
@@ -37,6 +37,20 @@ const TaskReducer = (state = initialState, action) => {
             return {
                 ...state,
                 tasks: state.tasks.map((task) => task.id === action.id ? { ...task, done: !task.done} : task)
+            };
+        };
+
+        case EDIT_TASK: {
+            return {
+                ...state,
+                tasks: state.tasks.map((task) => task.id === action.id ? { ...task, change: !task.change} : task)
+            };
+        };
+
+        case SAVE_TASK: {
+            return {
+                ...state,
+                tasks: state.tasks.map((task) => task.id === action.id ? {...task, change: !task.change, message: task.message} : task)
             };
         };
 

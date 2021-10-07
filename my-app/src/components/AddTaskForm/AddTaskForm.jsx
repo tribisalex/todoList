@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './AddForm.module.css'
+import s from './AddTaskForm.module.css'
 
 const AddTaskForm = ({NewTaskElement, onTaskChange, onAddTask, newTaskText}) => (
     <div className={s.addTaskForm}>
@@ -9,8 +9,11 @@ const AddTaskForm = ({NewTaskElement, onTaskChange, onAddTask, newTaskText}) => 
                    className={s.messageBlock}
                    ref={NewTaskElement}
                    onChange={onTaskChange}
-                   value={newTaskText}/>
-            <button onClick={onAddTask} className={s.btnAdd}>Добавить задание</button>
+                   value={newTaskText}
+                   required/>
+            <button className={s.btnAdd}
+                    onKeyPress={onAddTask}
+                    onClick={onAddTask}>Добавить задание</button>
     </div>
 )
 
