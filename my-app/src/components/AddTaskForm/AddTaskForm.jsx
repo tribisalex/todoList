@@ -1,16 +1,18 @@
 import React from 'react';
-import s from './AddForm.module.css'
+import s from './AddTaskForm.module.css'
 
-const AddTaskForm = ({NewTaskElement, onTaskChange, onAddTask, newTaskText}) => (
+const AddTaskForm = ({handleChangeValue, handleAddTask, value}) => (
     <div className={s.addTaskForm}>
         <h3 className={s.addTaskText}>Мои задания</h3>
-            <input type='text'
-                   placeholder={'Enter new task'}
-                   className={s.messageBlock}
-                   ref={NewTaskElement}
-                   onChange={onTaskChange}
-                   value={newTaskText}/>
-            <button onClick={onAddTask} className={s.btnAdd}>Добавить задание</button>
+        <input type='text'
+               value={value}
+               onChange={handleChangeValue}
+               placeholder={'Enter new task'}
+               className={s.messageBlock}
+               required/>
+        <button className={s.btnAdd}
+                onClick={handleAddTask}>Добавить задание
+        </button>
     </div>
 )
 
