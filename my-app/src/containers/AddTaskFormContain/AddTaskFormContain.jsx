@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useCallback, useState} from 'react';
 import {connect} from 'react-redux';
-import {addTaskActionCreator, updateNewTaskTextActionCreator} from "../../store/state/tasks/actions";
+import {addTaskActionCreator} from "../../store/state/tasks/actions";
 import AddTaskForm from "../../components/AddTaskForm/AddTaskForm";
 
 const mapStateToProps = (state) => (
@@ -12,28 +12,30 @@ const mapStateToProps = (state) => (
 
 const mapDispatchToProps = (dispatch) => (
     {
-        addTask: () => dispatch(addTaskActionCreator()),
-        updateNewTaskText: (text) => dispatch(updateNewTaskTextActionCreator(text))
+        addTask: (text) => dispatch(addTaskActionCreator(text))
     }
 )
 
-const AddTaskFormContain = ({addTask, updateNewTaskText, newTaskText}) => {
+const AddTaskFormContain = ({addTask}) => {
 
-    const NewTaskElement = React.createRef();
+    const [value, setValue] = useState('');
 
-    const onAddTask = () => {
-        addTask();
+    const handleChangeValue = useCallback((e) => {
+        setValue(e.target.value);
+    }, []);
+
+    const handleAddTask = (e) => {
+        e.preventDefault();
+
+        addTask(value);
+        setValue('');
     }
 
-    const onTaskChange = () => {
-        updateNewTaskText(NewTaskElement.current.value);
-    }
     return (
         <>
-            <AddTaskForm onAddTask={onAddTask}
-                         onTaskChange={onTaskChange}
-                         NewTaskElement={NewTaskElement}
-                         newTaskText={newTaskText}
+            <AddTaskForm handleAddTask={handleAddTask}
+                         value={value}
+                         handleChangeValue={handleChangeValue}
             />
         </>
     )

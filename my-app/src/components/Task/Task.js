@@ -3,12 +3,10 @@ import styles from "./Task.module.css";
 import kor from '../../assets/kor.png'
 import changed from '../../assets/change.png'
 import classNames from 'classnames/bind';
-import {valueMock} from "redux-form/lib/util/eventMocks";
 
 const cx = classNames.bind(styles);
 
-const Task = ({done, taskMarked, id, change, message, deleteTask, NewTaskElement, saveTask, editTask, newTaskText, onTaskChange}) => {
-    console.log(change)
+const Task = ({handleChangeValue, handleSaveTask, value, done, taskMarked, id, change, message, deleteTask, editTask}) => {
     return (
         <li className={cx('list_item', {'list_item_done': done})}>
 
@@ -22,11 +20,10 @@ const Task = ({done, taskMarked, id, change, message, deleteTask, NewTaskElement
                 }
                 {change &&
                 <input type='text'
-                       defaultValue={message}
-                       value={NewTaskElement}
-                       onChange={onTaskChange}
-                       ref={NewTaskElement}
-                       onBlur={() => saveTask(id, NewTaskElement.value)}
+                       id={id}
+                       value={value}
+                       onBlur={handleSaveTask}
+                       onChange={handleChangeValue}
                        autoFocus={true}/>
                 }
             </div>
@@ -35,9 +32,9 @@ const Task = ({done, taskMarked, id, change, message, deleteTask, NewTaskElement
                  alt='deleteButton'
                  onClick={() => deleteTask(id)}
                  src={kor}/>
-            <img className={styles.listItemChangeBtn}
-                 alt='deleteButton'
-                 onClick={() => editTask(id)}
+            <img className={styles.listItemEditBtn}
+                 alt='editButton'
+                 onClick={() => editTask(id, message)}
                  src={changed}/>
         </li>
     )

@@ -15,7 +15,6 @@
 .task {
     grid-area: task;
     -moz-user-select: none;
-    -khtml-user-select: none;
     -webkit-user-select: none;
     user-select: none;
 }
@@ -26,7 +25,7 @@
     cursor: pointer;
 }
 
-.listItemChangeBtn {
+.listItemEditBtn {
     grid-area: cb;
     width: 25px;
     cursor: pointer;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback, useState} from 'react';
 import {connect} from 'react-redux';
 import {
     deleteTaskActionCreator, editTaskActionCreator,
@@ -23,35 +23,44 @@ const mapDispatchToProps = (dispatch) => (
     }
 )
 
-const TaskList = ({taskMarked, deleteTask, tasks, newTaskText, onTaskChange, saveTask, editTask}) => {
+const TaskList = ({taskMarked, deleteTask, tasks, saveTask, editTask}) => {
 
-    const onSaveTask = (id, message) => {
-        saveTask(id, message);
+   const [value, setValue] = useState('');
+
+   const handleChangeValue = useCallback((e) => {
+        setValue(e.target.value);
+    },[]);
+
+   const handleSaveTask = (e) => {
+        e.preventDefault();
+        saveTask(Number(e.target.id), value);
+        setValue('');
     }
 
-    const onTaskMarked = (id) => {
+   const onTaskMarked = (id) => {
         taskMarked(id);
     }
 
-    const onDeleteTask = (id) => {
+   const onDeleteTask = (id) => {
         deleteTask(id);
     }
 
-    const onEditTask = (id) => {
-        editTask(id);
+   const onEditTask = (id, message) => {
+       setValue(message);
+       editTask(id);
     }
 
-    return (
+   return (
         <div>
             <div>
                 {tasks
                     .sort((a,b) => a.done - b.done)
                     .map((task) => <Task taskMarked={onTaskMarked}
+                                         handleChangeValue={handleChangeValue}
+                                         handleSaveTask={handleSaveTask}
+                                         value={value}
                                          deleteTask={onDeleteTask}
                                          editTask={onEditTask}
-                                         saveTask={onSaveTask}
-                                         newTaskText={newTaskText}
-                                         onTaskChange={onTaskChange}
                                          id={task.id}
                                          message={task.message}
                                          change={task.change}
