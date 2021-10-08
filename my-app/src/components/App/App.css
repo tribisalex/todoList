@@ -20,14 +20,14 @@
     top: 100px;
     left: 50%;
     transform: translate(-50%);
-    background: #171717;
+    background: #07575b;
     border-radius: 10px;
     box-shadow: 0 7px 30px rgba(75, 70, 6, 0.3);
 }
 
 body {
     margin: 0 auto;
-    background: #282828;
+    background: #003b46;
     color: #fff;
     font-family: "Nunito", sans-serif;
     align-items: center;

@@ -1,6 +1,6 @@
 .addTaskForm {
     grid-area: af;
-    background-color: lightblue;
+    background-color: #66a5ad;
     border-radius: 5px;
     display: grid;
     grid-gap: 15px;
@@ -23,8 +23,13 @@
     margin-left: 5px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
-    background: #d9d9d9;
-    content: "";
+    background: floralwhite;
+    color: #757575;
+    border: 2px solid #c4dfe6;
+}
+
+.messageBlock:focus {
+    border-color: #c4dfe6 ;
 }
 
  .btnAdd {
@@ -40,7 +45,7 @@ button {
     color: white;
     padding: 1px;
     border-radius: 0px;
-    background-color: lightseagreen;
+    background-color: #c4dfe6;
 }
 
 button:hover {
@@ -52,7 +57,7 @@ button:hover {
 }
 
 button:active {
-    color: #000;
+    color: #757575;
     border: #1071FF 1px solid;
     transition: .05s;
     background-color: #FFF;
